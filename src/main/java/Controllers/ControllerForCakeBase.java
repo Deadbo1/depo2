@@ -1,8 +1,10 @@
 package Controllers;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import Views.*;
-import Models.*;
 import Services.*;
 
 public class ControllerForCakeBase {
@@ -28,14 +30,15 @@ public class ControllerForCakeBase {
         this.view = View.getInstance();
     }
 
-    public void menu() {
+    public void menu() throws IOException {
         Scanner in = new Scanner(System.in);
         viewEditCakeBase.menu();
         System.out.println("Choose your option");
         String chose = in.next();
+        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
         if ("1".equals(chose)) {
             System.out.println("Enter the name of cake base");
-            String name = in.next();
+            String name = br.readLine();
             System.out.println("Enter price");
             float price = in.nextFloat();
             serviceForCakeBase.createCakeBases(name, price);
@@ -54,7 +57,7 @@ public class ControllerForCakeBase {
             int id = in.nextInt();
             System.out.println(serviceForCakeBase.getCakeBasesById(id));
             System.out.println("Enter new name");
-            String name = in.next();
+            String name = br.readLine();
             System.out.println("Enter new price");
             float price = in.nextFloat();
             serviceForCakeBase.updateCakeBases(id, name, price);
@@ -65,7 +68,7 @@ public class ControllerForCakeBase {
             String i = in.next();
             if ("1".equals(i)) {
                 System.out.println("Enter the name of cake base");
-                String name = in.next();
+                String name = br.readLine();
                 System.out.println(serviceForCakeBase.getCakeBasesByName(name));
                 service.wantToContinue();
             } else if ("2".equals(i)) {
@@ -75,7 +78,7 @@ public class ControllerForCakeBase {
                 service.wantToContinue();
             } else if ("3".equals(i)) {
                 System.out.println("Enter the name of cake base");
-                String name = in.next();
+                String name = br.readLine();
                 System.out.println("Enter price of cake base");
                 float price = in.nextFloat();
                 System.out.println(serviceForCakeBase.getCakeBasesByNameAndPrice(name, price));

@@ -2,6 +2,7 @@ package Services;
 
 import Models.*;
 import Repository.Repository;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class ServiceForDecoration {
 
     private Repository repository;
     private ServiceForCharacteristics serviceForCharacteristics;
+    private static final Logger log = Logger.getLogger(ServiceForCakeBase.class);
 
     private ServiceForDecoration() {
         this.repository = Repository.getInstance();
@@ -26,6 +28,7 @@ public class ServiceForDecoration {
     }
 
     public void addDecorations(Decorations decorations) {
+        log.info("Decoration " + decorations + " has been added");
         repository.addDecoration(decorations);
     }
 
@@ -35,10 +38,12 @@ public class ServiceForDecoration {
 
     public void updateDecoration(int id, String name, float price,String subscription,String chName) {
         Decorations updatedDecoration = getDecorationById(id);
+        log.info("Decoration " + updatedDecoration + " before update");
         updatedDecoration.setName(name);
         updatedDecoration.setPrice(price);
         serviceForCharacteristics.updateCharacteristicDecoration(id,chName,subscription);
         repository.updateDecorations(updatedDecoration);
+        log.info("Decoration " + updatedDecoration + " after update");
     }
 
     public void createDecoration(String name, float price, String charName, String subscription) {
@@ -50,11 +55,13 @@ public class ServiceForDecoration {
         characteristic.setName(charName);
         characteristic.setSubscription(subscription);
         repository.addDecorationsCharacteristics(decorationsCharacteristics);
-        repository.addDecoration(newDecoration);
+        addDecorations(newDecoration);
         repository.addCharacteristic(characteristic);
+        log.info("Decoration created" + newDecoration);
     }
 
     public void deleteDecoration(int id) {
+        log.info("Decoration " + getDecorationById(id) + " has been deleted");
         repository.deleteDecoration(getDecorationById(id));
     }
 
@@ -66,6 +73,7 @@ public class ServiceForDecoration {
                 foundDecorations.add(decoration);
             }
         }
+        log.info("List of decorations selected by name " + foundDecorations);
         return foundDecorations;
     }
 
@@ -77,11 +85,13 @@ public class ServiceForDecoration {
                 foundDecorations.add(decoration);
             }
         }
+        log.info("List of decorations selected by price " + foundDecorations);
         return foundDecorations;
     }
 
     public List<Decorations> getDecorationAll() {
         List<Decorations> decorations = new ArrayList<Decorations>(repository.getDecorations().values());
+        log.info("List of all decorations " + decorations);
         return decorations;
     }
 
@@ -93,6 +103,7 @@ public class ServiceForDecoration {
                 foundDecorations.add(decoration);
             }
         }
+        log.info("List of decoration selected by name and price " + foundDecorations);
         return foundDecorations;
     }
 }

@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import Repository.Repository;
 import Models.*;
+import org.apache.log4j.Logger;
 
 public class ServiceForCakes {
 
@@ -20,12 +21,14 @@ public class ServiceForCakes {
     }
 
     private Repository repository;
+    private static final Logger log = Logger.getLogger(ServiceForCakeBase.class);
 
     private ServiceForCakes () {
         this.repository = Repository.getInstance();
     }
 
     public void addCake(Cakes cake) {
+        log.info("Cake " + cake + "has been added");
         repository.addCake(cake);
     }
 
@@ -35,6 +38,7 @@ public class ServiceForCakes {
 
     public void updateCake(int id, String name, CakesBases cakesBases, List<Decorations> decorations) {
         Cakes updatedCake = getCakeById(id);
+        log.info("Cake " + updatedCake +" before update");
         updatedCake.setName(name);
         updatedCake.setCakeBase(cakesBases.getId());
         for (Decorations decoration : decorations) {
@@ -42,6 +46,7 @@ public class ServiceForCakes {
         }
         updatedCake.setPrice(cakesBases, decorations);
         repository.updateCake(updatedCake);
+        log.info("Cake " + updatedCake +" after update");
     }
 
     public Cakes createCake(List<Integer> decorations, int cakesBasesId, String name, String charName, String subscription, Customers customer) {
@@ -67,7 +72,8 @@ public class ServiceForCakes {
         }
         repository.addCakesCharacteristics(cakesCharacteristics);
         repository.addCharacteristic(characteristics);
-        repository.addCake(newCake);
+        addCake(newCake);
+        log.info("Create cake " + newCake + " by customer "+ customer.getFirstName() + " " + customer.getLastName());
         return newCake;
     }
 
@@ -91,6 +97,7 @@ public class ServiceForCakes {
                 }
             }
         }
+        log.info("List of cakes selected by cake base and few decorations " + foundCake);
         return foundCake;
     }
 
@@ -116,6 +123,7 @@ public class ServiceForCakes {
             if(cakesCharacteristic.getCakeId() == id){
                 characteristics = repository.getCharacteristicById(cakesCharacteristic.getCharacteristicId());
                 System.out.println(characteristics.getSubscription());
+                log.info("Description " + characteristics.getSubscription());
             }
         }
     }

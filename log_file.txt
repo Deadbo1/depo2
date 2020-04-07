@@ -1,0 +1,46 @@
+2020-04-07 17:41:05 INFO  Service:126 - Filled our DB with start data
+2020-04-07 17:42:40 INFO  Customers:15 - Create customer
+2020-04-07 17:45:19 INFO  Service:126 - Filled our DB with start data
+2020-04-07 17:45:29 INFO  ServiceForCustomers:52 - Create customerModels.Customers{id=1, firstName='Petya', lastName='Vasechkin'}
+2020-04-07 17:52:24 INFO  Service:126 - Filled our DB with start data
+2020-04-07 17:52:40 INFO  ServiceForCustomers:50 - Create customerModels.Customers{id=1, firstName='Gosha', lastName='Petkin'}
+2020-04-07 18:37:21 INFO  Service:126 - Filled our DB with start data
+2020-04-07 18:37:31 INFO  ServiceForCustomers:59 - Customer null was found by first name and last name
+2020-04-07 18:37:33 INFO  ServiceForCustomers:27 - Customer Models.Customers{id=1, firstName='Nikita', lastName='Melnikov'} add to DB
+2020-04-07 18:37:33 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=1, firstName='Nikita', lastName='Melnikov'}
+2020-04-07 18:37:44 INFO  ServiceForCakeBase:64 - Decoration Models.Decorations{id=4, name='Бизе', price=70.0} has been deleted
+2020-04-07 18:39:11 INFO  ServiceForCakeBase:31 - Cake Models.Cakes{id=3, customerId=1, cakeBase=2, name='Chocostraw', price=650.0, decorationId=[0, 1, 3], available=true}has been added
+2020-04-07 18:39:11 INFO  ServiceForCakeBase:76 - Create cake Models.Cakes{id=3, customerId=1, cakeBase=2, name='Chocostraw', price=650.0, decorationId=[0, 1, 3], available=true} by customer Nikita Melnikov
+2020-04-07 18:39:11 INFO  ServiceForCustomers:64 - Customer Models.Customers{id=1, firstName='Nikita', lastName='Melnikov'} balance 1500.0 was changed to 850.0
+2020-04-07 18:39:11 INFO  ServiceForCustomers:67 - Cake Models.Cakes{id=3, customerId=1, cakeBase=2, name='Chocostraw', price=650.0, decorationId=[0, 1, 3], available=false} was sold
+2020-04-07 18:39:19 INFO  Controller:91 - Customer Models.Customers{id=1, firstName='Nikita', lastName='Melnikov'} leaves the store
+2020-04-07 18:39:27 INFO  ServiceForCustomers:59 - Customer null was found by first name and last name
+2020-04-07 18:39:34 INFO  ServiceForCustomers:27 - Customer Models.Customers{id=2, firstName='Anton', lastName='Rodionov'} add to DB
+2020-04-07 18:39:34 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=2, firstName='Anton', lastName='Rodionov'}
+2020-04-07 19:59:03 INFO  Service:126 - Filled our DB with start data
+2020-04-07 19:59:27 INFO  ServiceForCustomers:59 - Customer null was found by first name and last name
+2020-04-07 19:59:28 INFO  ServiceForCustomers:27 - Customer Models.Customers{id=1, firstName='Ivan', lastName='Demkin'} add to DB
+2020-04-07 19:59:28 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=1, firstName='Ivan', lastName='Demkin'}
+2020-04-07 19:59:47 INFO  ServiceForCakeBase:88 - List of decorations selected by price []
+2020-04-07 20:00:08 INFO  ServiceForCakeBase:88 - List of decorations selected by price []
+2020-04-07 20:00:29 INFO  ServiceForCakeBase:88 - List of decorations selected by price []
+2020-04-07 20:01:04 INFO  ServiceForCakeBase:88 - List of decorations selected by price [Models.Decorations{id=1, name='Шоколад', price=100.0}]
+2020-04-07 20:01:59 INFO  ServiceForCustomers:59 - Customer null was found by first name and last name
+2020-04-07 20:02:02 INFO  ServiceForCustomers:27 - Customer Models.Customers{id=2, firstName='Aleksey', lastName='Berezin'} add to DB
+2020-04-07 20:02:02 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=2, firstName='Aleksey', lastName='Berezin'}
+2020-04-07 20:02:59 INFO  ServiceForCakeBase:31 - Cake Models.Cakes{id=3, customerId=2, cakeBase=0, name='Berry cake', price=500.0, decorationId=[0, 3], available=true}has been added
+2020-04-07 20:02:59 INFO  ServiceForCakeBase:76 - Create cake Models.Cakes{id=3, customerId=2, cakeBase=0, name='Berry cake', price=500.0, decorationId=[0, 3], available=true} by customer Aleksey Berezin
+2020-04-07 20:02:59 INFO  ServiceForCakeBase:126 - Description The best berry cake
+2020-04-07 20:02:59 INFO  ServiceForCustomers:64 - Customer Models.Customers{id=2, firstName='Aleksey', lastName='Berezin'} balance 900.0 was changed to 400.0
+2020-04-07 20:02:59 INFO  ServiceForCustomers:67 - Cake Models.Cakes{id=3, customerId=2, cakeBase=0, name='Berry cake', price=500.0, decorationId=[0, 3], available=false} was sold
+2020-04-07 20:04:42 INFO  Controller:99 - Customer Models.Customers{id=2, firstName='Aleksey', lastName='Berezin'} leaves the store
+2020-04-07 20:04:56 INFO  ServiceForCustomers:59 - Customer null was found by first name and last name
+2020-04-07 20:05:05 INFO  ServiceForCustomers:27 - Customer Models.Customers{id=3, firstName='Mikhail', lastName='Medvedkov'} add to DB
+2020-04-07 20:05:05 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=3, firstName='Mikhail', lastName='Medvedkov'}
+2020-04-07 20:05:38 INFO  Controller:127 - Program completed
+2020-04-07 20:08:22 INFO  Service:127 - Filled our DB with start data
+2020-04-07 20:08:34 INFO  ServiceForCustomers:59 - Customer null was found by first name and last name
+2020-04-07 20:08:35 INFO  ServiceForCustomers:27 - Customer Models.Customers{id=1, firstName='Anton', lastName='Gul'} add to DB
+2020-04-07 20:08:35 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=1, firstName='Anton', lastName='Gul'}
+2020-04-07 20:08:52 INFO  ServiceForCakeBase:68 - List of cake base selected by name [Models.CakesBases{id=0, price=150.0, name='Бисквит'}]
+2020-04-07 20:08:56 INFO  Service:46 - Customer Models.Customers{id=1, firstName='Anton', lastName='Gul'} leaves the store

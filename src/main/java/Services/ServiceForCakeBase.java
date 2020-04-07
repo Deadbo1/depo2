@@ -2,6 +2,8 @@ package Services;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
+
 import Repository.Repository;
 import Models.*;
 
@@ -17,6 +19,7 @@ public class ServiceForCakeBase {
     }
 
     private Repository repository;
+    private static final Logger log = Logger.getLogger(ServiceForCakeBase.class);
 
     private ServiceForCakeBase() {
         this.repository = Repository.getInstance();
@@ -25,6 +28,7 @@ public class ServiceForCakeBase {
 
     public void addCakeBase(CakesBases cakesBases) {
         repository.addCakeBase(cakesBases);
+        log.info("Cake base" + cakesBases + "has been added");
     }
 
     public CakesBases getCakeBasesById(int id) {
@@ -33,19 +37,23 @@ public class ServiceForCakeBase {
 
     public void updateCakeBases(int id, String name, float price) {
         CakesBases updatedCakeBases = getCakeBasesById(id);
+        log.info("Cake base " + updatedCakeBases +" before update");
         updatedCakeBases.setName(name);
         updatedCakeBases.setPrice(price);
         repository.updateCakeBase(updatedCakeBases);
+        log.info("Cake base " + updatedCakeBases +" after update");
     }
 
     public void createCakeBases(String name, float price) {
         CakesBases newCakeBases = new CakesBases();
         newCakeBases.setName(name);
         newCakeBases.setPrice(price);
-        repository.addCakeBase(newCakeBases);
+        addCakeBase(newCakeBases);
+        log.info("Created cake base " + newCakeBases);
     }
 
     public void deleteCakeBases(int id) {
+        log.info("Cake base " + getCakeBasesById(id) + " has been deleted");
         repository.deleteCakeBases(getCakeBasesById(id));
     }
 
@@ -57,6 +65,7 @@ public class ServiceForCakeBase {
                 foundCakeBase.add(cakesBases);
             }
         }
+        log.info("List of cake base selected by name " + foundCakeBase);
         return foundCakeBase;
     }
 
@@ -68,11 +77,13 @@ public class ServiceForCakeBase {
                 foundCakeBase.add(cakesBases);
             }
         }
+        log.info("List of cake base selected by price " + foundCakeBase);
         return foundCakeBase;
     }
 
     public List<CakesBases> getCakeBasesAll() {
         List<CakesBases> cakeBases = new ArrayList<CakesBases>(repository.getCakesBases().values());
+        log.info("List of all cake base " + cakeBases);
         return cakeBases;
     }
 
@@ -84,6 +95,7 @@ public class ServiceForCakeBase {
                 foundCakeBase.add(cakesBases);
             }
         }
+        log.info("List of cake base selected by price and name " + foundCakeBase);
         return foundCakeBase;
     }
 }

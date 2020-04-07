@@ -2,6 +2,7 @@ package Services;
 
 import Repository.Repository;
 import Models.*;
+import org.apache.log4j.Logger;
 
 public class ServiceForCharacteristics {
     private static ServiceForCharacteristics serviceForCharacteristics;
@@ -15,6 +16,7 @@ public class ServiceForCharacteristics {
     }
 
     private Repository repository;
+    private static final Logger log = Logger.getLogger(ServiceForCakeBase.class);
 
     private ServiceForCharacteristics() {
         this.repository = Repository.getInstance();
@@ -60,6 +62,6 @@ public class ServiceForCharacteristics {
         Characteristics characteristics = new Characteristics();
         characteristics.setName(name);
         characteristics.setSubscription(subscription);
-        repository.addCharacteristic(characteristics);
+        addCharacteristic(characteristics);
     }
 }

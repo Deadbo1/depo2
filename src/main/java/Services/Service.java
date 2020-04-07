@@ -5,10 +5,12 @@ import Repository.Repository;
 import Models.*;
 
 import java.util.*;
+import org.apache.log4j.Logger;
 
 public class Service {
 
     private static Service service;
+    private static final Logger log = Logger.getLogger(Service.class);
 
 
     public static Service getInstance() {
@@ -41,6 +43,7 @@ public class Service {
             controller.start();
         } else {
             Controller controller = Controller.getInstance();
+            log.info("Customer " + controller.getCustomer() + " leaves the store");
             controller.setCustomer(null);
             controller.start();
         }
@@ -121,6 +124,7 @@ public class Service {
         repository.addCakesDecorations(cakesDecorations2);
         repository.addCakesDecorations(cakesDecorations3);
         repository.addCakesDecorations(cakesDecorations4);
+        log.info("Filled our DB with start data");
     }
 
 }

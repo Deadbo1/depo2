@@ -1,5 +1,8 @@
 package Controllers;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import Views.*;
 import Models.*;
@@ -25,20 +28,21 @@ public class ControllerForDecoration {
         this.viewEditCakeDecoration = ViewEditCakeDecoration.getInstance();
     }
 
-    public void menu() {
+    public void menu() throws IOException {
         Scanner in = new Scanner(System.in);
         viewEditCakeDecoration.menu();
         System.out.println("Choose your option");
         String chose = in.next();
+        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
         if ("1".equals(chose)) {
             System.out.println("Enter name decoration");
-            String name = in.next();
+            String name = br.readLine();
             System.out.println("Enter price decoration");
             float price = in.nextFloat();
             System.out.println("Enter characteristic name");
-            String charName = in.next();
+            String charName = br.readLine();
             System.out.println("Describe the decoration");
-            String subscription = in.next();
+            String subscription = br.readLine();
             serviceForDecoration.createDecoration(name, price, charName, subscription);
             System.out.println(service.getRepository().getDecorations());
             service.wantToContinue();
@@ -58,11 +62,11 @@ public class ControllerForDecoration {
                 int id = in.nextInt();
                 Decorations decorations = service.getRepository().getDecorationById(id);
                 System.out.println("Enter name decoration");
-                String name = in.next();
+                String name = br.readLine();
                 System.out.println("Enter characteristic name");
                 String chName = in.next();
                 System.out.println("Describe decoration");
-                String subscription = in.next();
+                String subscription = br.readLine();
                 serviceForDecoration.updateDecoration(id,name,decorations.getPrice(),subscription,chName);
                 System.out.println(service.getRepository().getCharacteristics());
                 System.out.println(service.getRepository().getDecorations());
@@ -75,9 +79,9 @@ public class ControllerForDecoration {
                 System.out.println("Enter price decoration");
                 float price = in.nextFloat();
                 System.out.println("Enter characteristic name");
-                String chName = in.next();
+                String chName = br.readLine();
                 System.out.println("Describe decoration");
-                String subscription = in.nextLine();
+                String subscription = br.readLine();
                 serviceForDecoration.updateDecoration(id, decorations.getName(), price,subscription,chName);
                 service.wantToContinue();
             } else {
@@ -85,13 +89,13 @@ public class ControllerForDecoration {
                 System.out.println("Enter id decoration you want to change");
                 int id = in.nextInt();
                 System.out.println("Enter name decoration");
-                String name = in.next();
+                String name = br.readLine();
                 System.out.println("Enter price decoration");
                 float price = in.nextFloat();
                 System.out.println("Enter characteristic name");
-                String chName = in.next();
+                String chName = br.readLine();
                 System.out.println("Describe decoration");
-                String subscription = in.nextLine();
+                String subscription = br.readLine();
                 serviceForDecoration.updateDecoration(id, name, price,subscription,chName);
                 service.wantToContinue();
             }
@@ -100,7 +104,7 @@ public class ControllerForDecoration {
             String i = in.next();
             if ("1".equals(i)) {
                 System.out.println("Enter the name of decoration");
-                String name = in.next();
+                String name = br.readLine();
                 System.out.println(serviceForDecoration.getDecorationByName(name));
                 service.wantToContinue();
             } else if ("2".equals(i)) {
@@ -110,7 +114,7 @@ public class ControllerForDecoration {
                 service.wantToContinue();
             } else if ("3".equals(i)) {
                 System.out.println("Enter the name of decoration");
-                String name = in.next();
+                String name = br.readLine();
                 System.out.println("Enter price of decoration");
                 float price = in.nextFloat();
                 System.out.println(serviceForDecoration.getDecorationByNameAndPrice(name, price));
