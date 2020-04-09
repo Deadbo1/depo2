@@ -1,7 +1,7 @@
 package Services;
 
 import Controllers.Controller;
-import Repository.Repository;
+import Repository.*;
 import Models.*;
 
 import java.util.*;
@@ -22,16 +22,37 @@ public class Service {
     }
 
 
-    public Repository getRepository() {
-        return repository;
+    public RepositoryForCakes getRepositoryForCakes() {
+        return repositoryForCakes;
     }
 
 
-    private Repository repository;
+    private RepositoryForCakes repositoryForCakes;
+
+    private RepositoryForCakesBases repositoryForCakesBases;
+
+    private RepositoryForDecorations repositoryForDecorations;
+
+    private RepositoryForCharacteristics repositoryForCharacteristics;
+
+    private RepositoryForCustomers repositoryForCustomers;
+
+    private RepositoryForCakesDecorations repositoryForCakesDecorations;
+
+    private RepositoryForCakesCharacteristics repositoryForCakesCharacteristics;
+
+    private RepositoryForDecorationsCharacteristics repositoryForDecorationsCharacteristics;
 
 
     private Service() {
-        this.repository = Repository.getInstance();
+        this.repositoryForCakes = RepositoryForCakes.getInstance();
+        this.repositoryForCharacteristics = RepositoryForCharacteristics.getInstance();
+        this.repositoryForCakesBases = RepositoryForCakesBases.getInstance();
+        this.repositoryForDecorations = RepositoryForDecorations.getInstance();
+        this.repositoryForCustomers = RepositoryForCustomers.getInstance();
+        this.repositoryForCakesDecorations = RepositoryForCakesDecorations.getInstance();
+        this.repositoryForCakesCharacteristics = RepositoryForCakesCharacteristics.getInstance();
+        this.repositoryForDecorationsCharacteristics = RepositoryForDecorationsCharacteristics.getInstance();
     }
 
     public void wantToContinue() {
@@ -54,9 +75,9 @@ public class Service {
         CakesBases cakesBases = new CakesBases("Бисквит", 150);
         CakesBases cakesBases1 = new CakesBases("Рыхлое тесто", 100);
         CakesBases cakesBases2 = new CakesBases("Шоколадный Бискваит", 200);
-        repository.addCakeBase(cakesBases);
-        repository.addCakeBase(cakesBases1);
-        repository.addCakeBase(cakesBases2);
+        repositoryForCakesBases.addCakeBase(cakesBases);
+        repositoryForCakesBases.addCakeBase(cakesBases1);
+        repositoryForCakesBases.addCakeBase(cakesBases2);
         Decorations decorations = new Decorations("Вишня", 50);
         Characteristics characteristics = new Characteristics(decorations.getName(), "Вишенка на торте хайпа");
         DecorationsCharacteristics decorationsCharacteristics = new DecorationsCharacteristics(decorations, characteristics);
@@ -72,16 +93,16 @@ public class Service {
         Decorations decorations4 = new Decorations("Бизе", 70);
         Characteristics characteristics4 = new Characteristics(decorations4.getName(), "Бизешочка");
         DecorationsCharacteristics decorationsCharacteristics4 = new DecorationsCharacteristics(decorations4, characteristics4);
-        repository.addDecorationsCharacteristics(decorationsCharacteristics);
-        repository.addDecorationsCharacteristics(decorationsCharacteristics1);
-        repository.addDecorationsCharacteristics(decorationsCharacteristics2);
-        repository.addDecorationsCharacteristics(decorationsCharacteristics3);
-        repository.addDecorationsCharacteristics(decorationsCharacteristics4);
-        repository.addDecoration(decorations);
-        repository.addDecoration(decorations1);
-        repository.addDecoration(decorations2);
-        repository.addDecoration(decorations3);
-        repository.addDecoration(decorations4);
+        repositoryForDecorationsCharacteristics.addDecorationsCharacteristics(decorationsCharacteristics);
+        repositoryForDecorationsCharacteristics.addDecorationsCharacteristics(decorationsCharacteristics1);
+        repositoryForDecorationsCharacteristics.addDecorationsCharacteristics(decorationsCharacteristics2);
+        repositoryForDecorationsCharacteristics.addDecorationsCharacteristics(decorationsCharacteristics3);
+        repositoryForDecorationsCharacteristics.addDecorationsCharacteristics(decorationsCharacteristics4);
+        repositoryForDecorations.addDecoration(decorations);
+        repositoryForDecorations.addDecoration(decorations1);
+        repositoryForDecorations.addDecoration(decorations2);
+        repositoryForDecorations.addDecoration(decorations3);
+        repositoryForDecorations.addDecoration(decorations4);
         List<Integer> decorationId = new ArrayList<Integer>();
         decorationId.add(decorations.getId());
         List<Integer> decorationId1 = new ArrayList<Integer>();
@@ -91,6 +112,7 @@ public class Service {
         decorationId2.add(decorations.getId());
         decorationId2.add(decorations1.getId());
         Customers customers = new Customers(0,"Admin","Admin");
+        repositoryForCustomers.addCustomer(customers);
         Cakes cakes = new Cakes(customers,"Бисквитный Торт с вишней", cakesBases, 450, decorationId);
         Cakes cakes1 = new Cakes(customers,"Торт с вишней", cakesBases1, 500, decorationId1);
         Cakes cakes2 = new Cakes(customers,"Шоколадный Торт с вишней", cakesBases2, 630, decorationId2);
@@ -100,30 +122,30 @@ public class Service {
         CakesCharacteristics cakesCharacteristics = new CakesCharacteristics(cakes, characteristics);
         CakesCharacteristics cakesCharacteristics1 = new CakesCharacteristics(cakes1, characteristics6);
         CakesCharacteristics cakesCharacteristics2 = new CakesCharacteristics(cakes2, characteristics7);
-        repository.addCakesCharacteristics(cakesCharacteristics);
-        repository.addCakesCharacteristics(cakesCharacteristics1);
-        repository.addCakesCharacteristics(cakesCharacteristics2);
-        repository.addCharacteristic(characteristics);
-        repository.addCharacteristic(characteristics1);
-        repository.addCharacteristic(characteristics2);
-        repository.addCharacteristic(characteristics3);
-        repository.addCharacteristic(characteristics4);
-        repository.addCharacteristic(characteristics5);
-        repository.addCharacteristic(characteristics6);
-        repository.addCharacteristic(characteristics7);
-        repository.addCake(cakes);
-        repository.addCake(cakes1);
-        repository.addCake(cakes2);
+        repositoryForCakesCharacteristics.addCakesCharacteristics(cakesCharacteristics);
+        repositoryForCakesCharacteristics.addCakesCharacteristics(cakesCharacteristics1);
+        repositoryForCakesCharacteristics.addCakesCharacteristics(cakesCharacteristics2);
+        repositoryForCharacteristics.addCharacteristic(characteristics);
+        repositoryForCharacteristics.addCharacteristic(characteristics1);
+        repositoryForCharacteristics.addCharacteristic(characteristics2);
+        repositoryForCharacteristics.addCharacteristic(characteristics3);
+        repositoryForCharacteristics.addCharacteristic(characteristics4);
+        repositoryForCharacteristics.addCharacteristic(characteristics5);
+        repositoryForCharacteristics.addCharacteristic(characteristics6);
+        repositoryForCharacteristics.addCharacteristic(characteristics7);
+        repositoryForCakes.addCake(cakes);
+        repositoryForCakes.addCake(cakes1);
+        repositoryForCakes.addCake(cakes2);
         CakesDecorations cakesDecorations = new CakesDecorations(cakes, decorations);
         CakesDecorations cakesDecorations1 = new CakesDecorations(cakes1, decorations);
         CakesDecorations cakesDecorations2 = new CakesDecorations(cakes1, decorations2);
         CakesDecorations cakesDecorations3 = new CakesDecorations(cakes2, decorations);
         CakesDecorations cakesDecorations4 = new CakesDecorations(cakes2, decorations1);
-        repository.addCakesDecorations(cakesDecorations);
-        repository.addCakesDecorations(cakesDecorations1);
-        repository.addCakesDecorations(cakesDecorations2);
-        repository.addCakesDecorations(cakesDecorations3);
-        repository.addCakesDecorations(cakesDecorations4);
+        repositoryForCakesDecorations.addCakesDecorations(cakesDecorations);
+        repositoryForCakesDecorations.addCakesDecorations(cakesDecorations1);
+        repositoryForCakesDecorations.addCakesDecorations(cakesDecorations2);
+        repositoryForCakesDecorations.addCakesDecorations(cakesDecorations3);
+        repositoryForCakesDecorations.addCakesDecorations(cakesDecorations4);
         log.info("Filled our DB with start data");
     }
 

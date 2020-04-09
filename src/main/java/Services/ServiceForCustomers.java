@@ -1,8 +1,10 @@
 package Services;
 
-import Repository.Repository;
+import Repository.*;
 import Models.*;
 import org.apache.log4j.Logger;
+
+import java.util.HashMap;
 
 public class ServiceForCustomers {
     private static ServiceForCustomers serviceForCustomers;
@@ -16,19 +18,19 @@ public class ServiceForCustomers {
     }
     private static final Logger log = Logger.getLogger(ServiceForCustomers.class);
 
-    private Repository repository;
+    private RepositoryForCustomers repositoryForCustomers;
 
     private ServiceForCustomers() {
-        this.repository = Repository.getInstance();
+        this.repositoryForCustomers = RepositoryForCustomers.getInstance();
     }
 
     public void addCustomer(Customers customer) {
-        repository.addCustomer(customer);
+        repositoryForCustomers.addCustomer(customer);
         log.info("Customer "+ customer +" add to DB");
     }
 
     public Customers getCustomerById(int id) {
-        return repository.getCustomerById(id);
+        return repositoryForCustomers.getCustomerById(id);
     }
 
     public void updateCustomer(int id, String firstName, String lastName) {
@@ -36,13 +38,13 @@ public class ServiceForCustomers {
         log.info("Customer " + updatedCustomer +" before update");
         updatedCustomer.setFirstName(firstName);
         updatedCustomer.setLastName(lastName);
-        repository.updateCustomer(updatedCustomer);
+        repositoryForCustomers.updateCustomer(updatedCustomer);
         log.info("Customer " + updatedCustomer +" after update");
     }
 
     public void deleteCustomer(int id) {
         log.info("Customer " + getCustomerById(id) + "has been deleted");
-        repository.deleteCustomer(getCustomerById(id));
+        repositoryForCustomers.deleteCustomer(getCustomerById(id));
     }
 
     public Customers createCustomer(String firstName, String lastName, float balance) {
@@ -56,8 +58,8 @@ public class ServiceForCustomers {
     }
 
     public Customers getCustomerByFNameAndLName(String fName, String lName) {
-        log.info("Customer " + repository.getCustomerByFNameAndLName(fName,lName) + " was found by first name and last name");
-        return repository.getCustomerByFNameAndLName(fName,lName);
+        log.info("Customer " + repositoryForCustomers.getCustomerByFNameAndLName(fName,lName) + " was found by first name and last name");
+        return repositoryForCustomers.getCustomerByFNameAndLName(fName,lName);
     }
 
     public void buyCreateCake(Customers customer, Cakes cake) {
@@ -65,6 +67,10 @@ public class ServiceForCustomers {
         customer.setBalance(customer.getBalance() - cake.getPrice());
         cake.setAvailable(false);
         log.info("Cake " + cake + " was sold");
+    }
+
+    public HashMap<Integer, Customers> getCustomers() {
+        return repositoryForCustomers.getCustomers();
     }
 
 }

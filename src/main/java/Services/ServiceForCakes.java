@@ -1,10 +1,8 @@
 package Services;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import Repository.Repository;
+import java.util.*;
+
+import Repository.*;
 import Models.*;
 import org.apache.log4j.Logger;
 
@@ -20,20 +18,43 @@ public class ServiceForCakes {
         return serviceForCakes;
     }
 
-    private Repository repository;
+    private RepositoryForCakes repositoryForCakes;
+
+    private RepositoryForCakesBases repositoryForCakesBases;
+
+    private ServiceForDecoration serviceForDecoration;
+
+    private ServiceForCharacteristics serviceForCharacteristics;
+
+    private RepositoryForCharacteristics repositoryForCharacteristics;
+
+    private RepositoryForCakesDecorations repositoryForCakesDecorations;
+
+    private RepositoryForCakesCharacteristics repositoryForCakesCharacteristics;
+
     private static final Logger log = Logger.getLogger(ServiceForCakeBase.class);
 
     private ServiceForCakes () {
-        this.repository = Repository.getInstance();
+        this.repositoryForCakes = RepositoryForCakes.getInstance();
+        this.repositoryForCakesCharacteristics = RepositoryForCakesCharacteristics.getInstance();
+        this.repositoryForCakesBases = RepositoryForCakesBases.getInstance();
+        this.repositoryForCharacteristics = RepositoryForCharacteristics.getInstance();
+        this.serviceForDecoration = ServiceForDecoration.getInstance();
+        this.serviceForCharacteristics = ServiceForCharacteristics.getInstance();
+        this.repositoryForCakesDecorations = RepositoryForCakesDecorations.getInstance();
     }
 
     public void addCake(Cakes cake) {
         log.info("Cake " + cake + "has been added");
-        repository.addCake(cake);
+        repositoryForCakes.addCake(cake);
     }
 
     public Cakes getCakeById(int id) {
-        return repository.getCakeById(id);
+        return repositoryForCakes.getCakeById(id);
+    }
+
+    public HashMap<Integer, Cakes> getCakes() {
+        return repositoryForCakes.getCakes();
     }
 
     public void updateCake(int id, String name, CakesBases cakesBases, List<Decorations> decorations) {
@@ -45,7 +66,7 @@ public class ServiceForCakes {
             updatedCake.addDecorationId(decoration.getId());
         }
         updatedCake.setPrice(cakesBases, decorations);
-        repository.updateCake(updatedCake);
+        repositoryForCakes.updateCake(updatedCake);
         log.info("Cake " + updatedCake +" after update");
     }
 
@@ -63,15 +84,15 @@ public class ServiceForCakes {
         }
         List<Decorations> newDecorations = new ArrayList<Decorations>();
         for (Integer decoration : decorations) {
-            newDecorations.add(repository.getDecorationById(decoration));
+            newDecorations.add(serviceForDecoration.getDecorationById(decoration));
         }
-        newCake.setPrice(repository.getCakeBasesById(cakesBasesId), newDecorations);
+        newCake.setPrice(repositoryForCakesBases.getCakeBasesById(cakesBasesId), newDecorations);
         for (Decorations id : newDecorations) {
             CakesDecorations cakesDecorations = new CakesDecorations(newCake, id);
-            repository.addCakesDecorations(cakesDecorations);
+            repositoryForCakesDecorations.addCakesDecorations(cakesDecorations);
         }
-        repository.addCakesCharacteristics(cakesCharacteristics);
-        repository.addCharacteristic(characteristics);
+        repositoryForCakesCharacteristics.addCakesCharacteristics(cakesCharacteristics);
+        serviceForCharacteristics.addCharacteristic(characteristics);
         addCake(newCake);
         log.info("Create cake " + newCake + " by customer "+ customer.getFirstName() + " " + customer.getLastName());
         return newCake;
@@ -84,7 +105,7 @@ public class ServiceForCakes {
                 return integer.toString().compareTo(t1.toString());
             }
         });
-        for (Cakes cake : new ArrayList<Cakes>(repository.getCakes().values())) {
+        for (Cakes cake : new ArrayList<Cakes>(repositoryForCakes.getCakes().values())) {
             if (cake.getCakeBaseId() == cakeBaseId) {
                 List<Integer> tempList = cake.getDecorationId();
                 Collections.sort(tempList, new Comparator<Integer>() {
@@ -102,17 +123,17 @@ public class ServiceForCakes {
     }
 
     public void deleteCake(int id) {
-        repository.deleteCake(getCakeById(id));
+        repositoryForCakes.deleteCake(getCakeById(id));
     }
 
     public void updateCharacteristicCake(int cakeId, String name, String subscription) {
         Characteristics characteristics;
-        for (CakesCharacteristics cakesCharacteristics : repository.getCakesCharacteristics()) {
+        for (CakesCharacteristics cakesCharacteristics : repositoryForCakesCharacteristics.getCakesCharacteristics()) {
             if (cakesCharacteristics.getCakeId() == cakeId) {
-                characteristics = repository.getCharacteristicById(cakesCharacteristics.getCharacteristicId());
+                characteristics = serviceForCharacteristics.getCharacteristicsById(cakesCharacteristics.getCharacteristicId());
                 characteristics.setName(name);
                 characteristics.setSubscription(subscription);
-                repository.updateCharacteristic(characteristics);
+                repositoryForCharacteristics.updateCharacteristic(characteristics);
             }
         }
     }
@@ -121,7 +142,7 @@ public class ServiceForCakes {
         Characteristics characteristics;
         for (CakesCharacteristics cakesCharacteristic : cakesCharacteristics) {
             if(cakesCharacteristic.getCakeId() == id){
-                characteristics = repository.getCharacteristicById(cakesCharacteristic.getCharacteristicId());
+                characteristics = serviceForCharacteristics.getCharacteristicsById(cakesCharacteristic.getCharacteristicId());
                 System.out.println(characteristics.getSubscription());
                 log.info("Description " + characteristics.getSubscription());
             }

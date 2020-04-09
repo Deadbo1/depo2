@@ -44,3 +44,55 @@
 2020-04-07 20:08:35 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=1, firstName='Anton', lastName='Gul'}
 2020-04-07 20:08:52 INFO  ServiceForCakeBase:68 - List of cake base selected by name [Models.CakesBases{id=0, price=150.0, name='Бисквит'}]
 2020-04-07 20:08:56 INFO  Service:46 - Customer Models.Customers{id=1, firstName='Anton', lastName='Gul'} leaves the store
+2020-04-09 15:01:26 INFO  Service:133 - Filled our DB with start data
+2020-04-09 15:01:29 INFO  ServiceForCustomers:59 - Customer null was found by first name and last name
+2020-04-09 15:01:32 INFO  ServiceForCustomers:27 - Customer Models.Customers{id=1, firstName='A', lastName='B'} add to DB
+2020-04-09 15:01:32 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=1, firstName='A', lastName='B'}
+2020-04-09 15:01:41 INFO  ServiceForCakeBase:104 - List of all decorations [Models.Decorations{id=0, name='Вишня', price=50.0}, Models.Decorations{id=1, name='Шоколад', price=100.0}, Models.Decorations{id=2, name='Сливки', price=70.0}, Models.Decorations{id=3, name='Клубника', price=50.0}, Models.Decorations{id=4, name='Бизе', price=70.0}]
+2020-04-09 15:02:11 INFO  ServiceForCakeBase:37 - Decoration Models.Decorations{id=5, name='Asfs', price=55.0} has been added
+2020-04-09 15:02:11 INFO  ServiceForCakeBase:70 - Decoration createdModels.Decorations{id=5, name='Asfs', price=55.0}
+2020-04-09 15:02:21 INFO  Service:52 - Customer Models.Customers{id=1, firstName='A', lastName='B'} leaves the store
+2020-04-09 15:02:30 INFO  ServiceForCustomers:59 - Customer null was found by first name and last name
+2020-04-09 15:02:32 INFO  ServiceForCustomers:27 - Customer Models.Customers{id=2, firstName='f', lastName='f'} add to DB
+2020-04-09 15:02:32 INFO  ServiceForCustomers:54 - Created customer Models.Customers{id=2, firstName='f', lastName='f'}
+2020-04-09 15:02:34 INFO  Controller:134 - Program completed
+2020-04-09 15:05:23 INFO  Service:133 - Filled our DB with start data
+2020-04-09 15:23:43 INFO  Service:133 - Filled our DB with start data
+2020-04-09 15:46:30 INFO  Service:140 - Filled our DB with start data
+2020-04-09 15:46:35 INFO  ServiceForCustomers:61 - Customer null was found by first name and last name
+2020-04-09 15:46:37 INFO  ServiceForCustomers:29 - Customer Models.Customers{id=1, firstName='A', lastName='B'} add to DB
+2020-04-09 15:46:37 INFO  ServiceForCustomers:56 - Created customer Models.Customers{id=1, firstName='A', lastName='B'}
+2020-04-09 15:47:17 INFO  ServiceForCakeBase:47 - Decoration Models.Decorations{id=4, name='Бизе', price=70.0} before update
+2020-04-09 15:47:17 INFO  ServiceForCakeBase:52 - Decoration Models.Decorations{id=4, name='Fly', price=150.0} after update
+2020-04-09 15:49:25 INFO  Service:58 - Customer Models.Customers{id=1, firstName='A', lastName='B'} leaves the store
+2020-04-09 15:49:31 INFO  ServiceForCustomers:61 - Customer null was found by first name and last name
+2020-04-09 15:49:32 INFO  ServiceForCustomers:29 - Customer Models.Customers{id=2, firstName='A', lastName='C'} add to DB
+2020-04-09 15:49:32 INFO  ServiceForCustomers:56 - Created customer Models.Customers{id=2, firstName='A', lastName='C'}
+2020-04-09 15:49:35 INFO  Controller:130 - Program completed
+2020-04-09 15:49:43 INFO  Service:140 - Filled our DB with start data
+2020-04-09 15:49:47 INFO  ServiceForCustomers:61 - Customer null was found by first name and last name
+2020-04-09 15:49:49 INFO  ServiceForCustomers:29 - Customer Models.Customers{id=1, firstName='A', lastName='B'} add to DB
+2020-04-09 15:49:49 INFO  ServiceForCustomers:56 - Created customer Models.Customers{id=1, firstName='A', lastName='B'}
+2020-04-09 15:50:20 INFO  ServiceForCakeBase:47 - Decoration Models.Decorations{id=4, name='Бизе', price=70.0} before update
+2020-04-09 15:50:20 INFO  ServiceForCakeBase:52 - Decoration Models.Decorations{id=4, name='Fly', price=150.0} after update
+2020-04-09 15:50:27 INFO  Controller:130 - Program completed
+2020-04-09 16:00:57 INFO  Service:143 - Filled our DB with start data
+2020-04-09 16:12:03 INFO  Service:146 - Filled our DB with start data
+2020-04-09 16:27:57 INFO  Service:149 - Filled our DB with start data
+2020-04-09 16:40:57 INFO  Service:149 - Filled our DB with start data
+2020-04-09 16:41:44 INFO  ServiceForCustomers:61 - Customer null was found by first name and last name
+2020-04-09 16:41:46 INFO  ServiceForCustomers:29 - Customer Models.Customers{id=1, firstName='Nik', lastName='Lok'} add to DB
+2020-04-09 16:41:46 INFO  ServiceForCustomers:56 - Created customer Models.Customers{id=1, firstName='Nik', lastName='Lok'}
+2020-04-09 16:41:55 INFO  ServiceForCakeBase:77 - Decoration Models.Decorations{id=4, name='Бизе', price=70.0} has been deleted
+2020-04-09 16:46:03 INFO  Service:149 - Filled our DB with start data
+2020-04-09 16:46:17 INFO  Service:149 - Filled our DB with start data
+2020-04-09 16:46:23 INFO  ServiceForCustomers:61 - Customer null was found by first name and last name
+2020-04-09 16:46:24 INFO  ServiceForCustomers:29 - Customer Models.Customers{id=1, firstName='Nik', lastName='Kik'} add to DB
+2020-04-09 16:46:24 INFO  ServiceForCustomers:56 - Created customer Models.Customers{id=1, firstName='Nik', lastName='Kik'}
+2020-04-09 16:46:33 INFO  ServiceForCakeBase:77 - Decoration Models.Decorations{id=4, name='Бизе', price=70.0} has been deleted
+2020-04-09 16:48:37 INFO  Service:149 - Filled our DB with start data
+2020-04-09 16:48:41 INFO  ServiceForCustomers:61 - Customer null was found by first name and last name
+2020-04-09 16:48:43 INFO  ServiceForCustomers:29 - Customer Models.Customers{id=1, firstName='Nik', lastName='Kik'} add to DB
+2020-04-09 16:48:43 INFO  ServiceForCustomers:56 - Created customer Models.Customers{id=1, firstName='Nik', lastName='Kik'}
+2020-04-09 16:48:51 INFO  ServiceForCakeBase:77 - Decoration Models.Decorations{id=4, name='Бизе', price=70.0} has been deleted
+2020-04-09 16:49:05 INFO  Controller:130 - Program completed

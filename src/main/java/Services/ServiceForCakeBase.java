@@ -1,10 +1,11 @@
 package Services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.apache.log4j.Logger;
 
-import Repository.Repository;
+import Repository.*;
 import Models.*;
 
 public class ServiceForCakeBase {
@@ -18,21 +19,21 @@ public class ServiceForCakeBase {
         return serviceForCakeBase;
     }
 
-    private Repository repository;
+    private RepositoryForCakesBases repositoryForCakesBases;
     private static final Logger log = Logger.getLogger(ServiceForCakeBase.class);
 
     private ServiceForCakeBase() {
-        this.repository = Repository.getInstance();
+        this.repositoryForCakesBases = RepositoryForCakesBases.getInstance();
     }
 
 
     public void addCakeBase(CakesBases cakesBases) {
-        repository.addCakeBase(cakesBases);
+        repositoryForCakesBases.addCakeBase(cakesBases);
         log.info("Cake base" + cakesBases + "has been added");
     }
 
     public CakesBases getCakeBasesById(int id) {
-        return repository.getCakeBasesById(id);
+        return repositoryForCakesBases.getCakeBasesById(id);
     }
 
     public void updateCakeBases(int id, String name, float price) {
@@ -40,7 +41,7 @@ public class ServiceForCakeBase {
         log.info("Cake base " + updatedCakeBases +" before update");
         updatedCakeBases.setName(name);
         updatedCakeBases.setPrice(price);
-        repository.updateCakeBase(updatedCakeBases);
+        repositoryForCakesBases.updateCakeBase(updatedCakeBases);
         log.info("Cake base " + updatedCakeBases +" after update");
     }
 
@@ -54,11 +55,11 @@ public class ServiceForCakeBase {
 
     public void deleteCakeBases(int id) {
         log.info("Cake base " + getCakeBasesById(id) + " has been deleted");
-        repository.deleteCakeBases(getCakeBasesById(id));
+        repositoryForCakesBases.deleteCakeBases(getCakeBasesById(id));
     }
 
     public List<CakesBases> getCakeBasesByName(String name) {
-        List<CakesBases> cakeBases = new ArrayList<CakesBases>(repository.getCakesBases().values());
+        List<CakesBases> cakeBases = new ArrayList<CakesBases>(repositoryForCakesBases.getCakesBases().values());
         List<CakesBases> foundCakeBase = new ArrayList<CakesBases>();
         for (CakesBases cakesBases : cakeBases) {
             if (cakesBases.getName().equals(name)) {
@@ -70,7 +71,7 @@ public class ServiceForCakeBase {
     }
 
     public List<CakesBases> getCakeBasesByPrice(float price) {
-        List<CakesBases> cakeBases = new ArrayList<CakesBases>(repository.getCakesBases().values());
+        List<CakesBases> cakeBases = new ArrayList<CakesBases>(repositoryForCakesBases.getCakesBases().values());
         List<CakesBases> foundCakeBase = new ArrayList<CakesBases>();
         for (CakesBases cakesBases : cakeBases) {
             if (cakesBases.getPrice() == price) {
@@ -82,13 +83,17 @@ public class ServiceForCakeBase {
     }
 
     public List<CakesBases> getCakeBasesAll() {
-        List<CakesBases> cakeBases = new ArrayList<CakesBases>(repository.getCakesBases().values());
+        List<CakesBases> cakeBases = new ArrayList<CakesBases>(repositoryForCakesBases.getCakesBases().values());
         log.info("List of all cake base " + cakeBases);
         return cakeBases;
     }
 
+    public HashMap<Integer, CakesBases> getCakesBases() {
+        return repositoryForCakesBases.getCakesBases();
+    }
+
     public List<CakesBases> getCakeBasesByNameAndPrice(String name, float price) {
-        List<CakesBases> cakeBases = new ArrayList<CakesBases>(repository.getCakesBases().values());
+        List<CakesBases> cakeBases = new ArrayList<CakesBases>(repositoryForCakesBases.getCakesBases().values());
         List<CakesBases> foundCakeBase = new ArrayList<CakesBases>();
         for (CakesBases cakesBases : cakeBases) {
             if (cakesBases.getName().equals(name) && cakesBases.getPrice() == price) {

@@ -3,8 +3,7 @@ package Controllers;
 import java.io.IOException;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
-
-import Services.Service;
+import Services.*;
 import Views.*;
 import Models.*;
 
@@ -71,11 +70,11 @@ public class Controller {
                     log.info("Customer " + customer + " balance not changed " + customer.getBalance());
                 }
             } else {
-                    System.out.println("Enter quantity of your money");
-                    float balance = in.nextFloat();
-                    this.customer = controllerForCustomer.getServiceForCustomers().createCustomer(fName, lName, balance);
-                }
+                System.out.println("Enter quantity of your money");
+                float balance = in.nextFloat();
+                this.customer = controllerForCustomer.getServiceForCustomers().createCustomer(fName, lName, balance);
             }
+        }
         view.menu();
         System.out.println("Choose your option");
         String answer = in.next();
@@ -105,7 +104,7 @@ public class Controller {
             String fiName = in.next();
             System.out.println("Enter your last name");
             String laName = in.next();
-            System.out.println(service.getRepository().getCustomers());
+            System.out.println(controllerForCustomer.getServiceForCustomers().getCustomers());
             Customers test1 = controllerForCustomer.getServiceForCustomers().getCustomerByFNameAndLName(fiName, laName);
             if (test1 != null) {
                 log.info("Customer " + test1 + "already created");
@@ -125,7 +124,7 @@ public class Controller {
                 float balance = in.nextFloat();
                 this.customer = controllerForCustomer.getServiceForCustomers().createCustomer(fiName, laName, balance);
             }
-            System.out.println(service.getRepository().getCustomers());
+            System.out.println(controllerForCustomer.getServiceForCustomers().getCustomers());
             start();
         } else if ("0".equals(answer)) {
             log.info("Program completed");
