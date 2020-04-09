@@ -75,6 +75,7 @@ public class ServiceForDecoration {
 
     public void deleteDecoration(int id) {
         log.info("Decoration " + getDecorationById(id) + " has been deleted");
+        log.info("Characteristic for this decoration deleted too from DB");
         repositoryForDecorationsCharacteristics.deleteDecorationsCharacteristic(id);
         repositoryForDecorations.deleteDecoration(getDecorationById(id));
     }
